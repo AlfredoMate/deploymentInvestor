@@ -1,19 +1,23 @@
-variable "dockerhub_frontend" {
-  default = "alfredomate/investor-frontned:latest"
-}
-
-variable "dockerhub_backed" {
+variable "dockerhub_backend" {
+  type    = string
   default = "alfredomate/investor"
 }
 
-variable "TF_VAR_db_username" {
-    type = String
-  
+variable "dockerhub_frontend" {
+  type    = string
+  default = "alfredomate/investor-frontend"
 }
 
-variable "TF_VAR_db_password" {
-    type = String
-  
+variable "db_username" {
+  type = string
 }
 
+variable "db_password" {
+  type      = string
+  sensitive = true
+}
 
+variable "db_name" {
+  type    = string
+  default = "investor_db"
+}
