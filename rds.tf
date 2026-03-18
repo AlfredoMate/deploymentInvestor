@@ -9,6 +9,7 @@ resource "aws_db_instance" "mysql" {
   skip_final_snapshot     = true
   publicly_accessible     = false
   vpc_security_group_ids  = [aws_security_group.rds.id]
+  db_subnet_group_name = aws_db_subnet_group.main.name
   deletion_protection     = false
   backup_retention_period = 7
   multi_az                = false
