@@ -12,9 +12,8 @@ resource "aws_instance" "app" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
 
-  vpc_security_group_ids             = [aws_security_group.ec2.id]
-
-  subnet_id = aws_subnet.subnet_a.id
+  vpc_security_group_ids = [aws_security_group.ec2.id]
+  subnet_id             = aws_subnet.subnet_a.id
   associate_public_ip_address = true
 
   user_data = templatefile("${path.module}/user_data.sh", {
@@ -26,5 +25,11 @@ resource "aws_instance" "app" {
   tags = {
     Name      = "docker-app"
     CreatedBy = "terraform"
+  }
+
+  # This forces recreation if user_data changes
+  lifecycle {
+    create_before_destroy = true
+    ignore_changes        = [] # optional: forces new instance every apply if anything changes
   }
 }
