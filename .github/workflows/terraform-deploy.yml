@@ -10,6 +10,9 @@ jobs:
     name: Terraform apply
     runs-on: ubuntu-latest
 
+    env: 
+      TF_VAR_db_username: ${{ secrets.TF_VAR_DB_USERNAME }} # or use a secret if you prefer 
+      TF_VAR_db_password: ${{ secrets.TF_VAR_DB_PASSWORD }}
 
     steps:
       - name: Checkout repository
