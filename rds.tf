@@ -13,4 +13,8 @@ resource "aws_db_instance" "mysql" {
   deletion_protection     = false
   backup_retention_period = 7
   multi_az                = false
+  tags = {
+    Name      = "investor-mysql"
+    CreatedBy = "terraform"
+  }
 }

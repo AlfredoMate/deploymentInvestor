@@ -24,6 +24,7 @@ resource "aws_instance" "app" {
   })
 
   tags = {
-    Name = "docker-app"
+    Name      = "docker-app"
+    CreatedBy = "terraform"
   }
 }
