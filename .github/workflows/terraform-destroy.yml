@@ -1,10 +1,10 @@
 name: Terraform Destroy
 
 on:
-  workflow_dispatch:   # manually trigger from GitHub UI
+  workflow_dispatch:   # manually trigger from GitHub UI destroy branch
   push:
     branches:
-      - main
+      - destroy
 
 jobs:
   terraform_destroy:
